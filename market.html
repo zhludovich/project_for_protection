@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Услуги ClearAestetics</title>
+  <link rel="stylesheet" type="text/css" href="Word.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/fav/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="img/fav/favicon-16x16.png" />
+  <link rel="manifest" href="img/fav/site.webmanifest" />
+</head>
+<body>
+    <header>
+
+        <div class="zagol">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.png" alt="LOGO"></a>
+            </div>
+            <div class="name">
+                <p>ClearAesthetics</p>
+            </div>
+            <nav class="menu">
+                <div class="help">
+                    <p class="help-button">🛈</p> 
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class = 'korzina'>
+         <p id = 'counter_p'><b>0</b></p>
+        <a  href="cart.html"><img src="img/korzina.png" alt=""></a>
+        
+    </div>
+    <div id="popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color:#fff; border:1px solid #ccc; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.2); z-index:1000; color: #0080ff;">
+      <h2>Вам нужна помощь?</h2>
+      <p>Свяжитесь с нами по телефону +7 (номер телефона) или по электронной почте [email protected]</p>
+      <button id="closeButton">Закрыть</button>
+    </div>
+    
+    <script>
+      const helpButton = document.querySelector('.help-button'); 
+      const popup = document.getElementById('popup');
+      const closeButton = document.getElementById('closeButton');
+    
+      helpButton.addEventListener('click', () => {
+        popup.style.display = 'block';
+      });
+    
+      closeButton.addEventListener('click', () => {
+        popup.style.display = 'none';
+      });
+    </script>
+
+    <main style="flex-direction: row; align-items: flex-start;">
+      <div class="filter">
+            <h1>Фильтры</h1>
+            <div class="filt">
+                <button data-filter="all">Все</button>
+                <button data-filter="Экстерьер">Экстерьер</button>
+                <button data-filter="Интерьер">Интерьер</button>
+                <button data-filter="Архитектурное">Архитектурное</button>
+                <button data-filter="Комплекты">Комплекты</button>
+            </div>
+            
+            <h1>Сортировка</h1>
+            <div class="sortirovka">
+                
+                <button data-sort="price-asc">Цена по возрастанию</button>
+                <button data-sort="price-desc">Цена по убыванию</button>
+                <button data-sort="default">По умолчанию</button>
+            </div>
+        </div>
+      <div class="block">
+        <h1>Товары</h1>
+        <div id="product_list"></div>
+      </div>
+    </main>
+    
+    <script src="js/cart.js"></script>
+    <script src="js/cart-page.js"></script>
+    <script>
+    let currentFilter = 'all';
+    let currentSort = 'default';
+    let podschet = 0;
+      const products = [
+    {
+        id: 1,
+        name: "Термопанели",
+        price: 4500,
+        image: "img/termopanel.jpg",
+        description: "Утепленные фасадные панели с точностью стыковки до 1мм",
+        category: "Экстерьер"
+    },
+    {
+        id: 2,
+        name: "Русты",
+        price: 2800,
+        image: "img/русты.jpg",
+        description: "Декоративные элементы для отделки углов зданий",
+        category: "Экстерьер"
+    },
+    {
+        id: 3,
+        name: "Межэтажные пояса",
+        price: 3200,
+        image: "img/mezhetazh.png",
+        description: "Горизонтальные разделители между этажами",
+        category: "Экстерьер"
+    },
+    {
+        id: 4,
+        name: "Подоконники (внешние)",
+        price: 5200,
+        image: "img/podokonnik_vnsh.jpg",
+        description: "Фасадные подоконные плиты",
+        category: "Экстерьер"
+    },
+    {
+        id: 5,
+        name: "Оконные откосы (наружные)",
+        price: 1800,
+        image: "img/otkos.jpg",
+        description: "Внешнее обрамление окон",
+        category: "Экстерьер"
+    },
+    {
+        id: 6,
+        name: "Арочные проемы",
+        price: 12500,
+        image: "img/arki.jpg",
+        description: "Декоративные арки для дверных проемов",
+        category: "Интерьер"
+    },
+    {
+        id: 7,
+        name: "Декоративные карнизы",
+        price: 1500,
+        image: "img/karniz.jpg",
+        description: "Потолочные и мебельные карнизы",
+        category: "Интерьер"
+    },
+    {
+        id: 8,
+        name: "Молдинги",
+        price: 900,
+        image: "img/molding.png",
+        description: "Декоративные планки для стен и потолков",
+        category: "Интерьер"
+    },
+    {
+        id: 9,
+        name: "Пилястры",
+        price: 6800,
+        image: "img/pilyastri.jpg",
+        description: "Внутренние декоративные колонны",
+        category: "Интерьер"
+    },
+    {
+        id: 10,
+        name: "Подоконники (внутренние)",
+        price: 3800,
+        image: "img/podokonnik_vntr.jpg",
+        description: "Интерьерные подоконные доски",
+        category: "Интерьер"
+    },
+    {
+        id: 11,
+        name: "Колонны",
+        price: 24900,
+        image: "img/kolonn.jpg",
+        description: "Несущие и декоративные колонны",
+        category: "Архитектурное"
+    },
+    {
+        id: 12,
+        name: "Барельефы",
+        price: 8500,
+        image: "img/barelef.jpg",
+        description: "Художественные рельефные панно",
+        category: "Архитектурное"
+    },
+    {
+        id: 13,
+        name: "Декоративные замки",
+        price: 4200,
+        image: "img/zamki.jpg",
+        description: "Замковые камни для арок и сводов",
+        category: "Архитектурное"
+    },
+    {
+        id: 14,
+        name: "Кронштейны",
+        price: 2900,
+        image: "img/kronsh.jpg",
+        description: "Декоративные опорные элементы",
+        category: "Архитектурное"
+    },
+    {
+        id: 15,
+        name: "Классический интерьер",
+        price: 28500,
+        image: "img/komplekt1.jpg",
+        description: "Комплект (пилястры + молдинги + карнизы) для стандартной комнаты",
+        category: "Комплекты"
+    },
+    {
+        id: 16,
+        name: "Фасад премиум",
+        price: 89500, 
+        image: "img/komplekt2.jpg",
+        description: "Комплект (термопанели + русты + межэтажные пояса) для фасада",
+        category: "Комплекты"
+    },
+    {
+        id: 17,
+        name: "Архитектурный декор",
+        price: 45200,
+        image: "img/komplekt3.jpg",
+        description: "Комплект (колонны + барельефы + кронштейны) для парадной зоны",
+        category: "Комплекты"
+    },
+    {
+        id: 18,
+        name: "Чистовая отделка",
+        price: 20000,
+        image: "img/komplekt4.jpg",
+        description:"Комплект(окрашивание + оклеивание + покрытие полов + двери,окна,розетки,выключатели + сантехника + осветительные приборы)",
+        category: "Комплекты"
+    }
+]
+function createProductCard(product) {
+    return `
+        <div class="product-card" data-category="${product.category}">
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <span class="price">${product.price.toLocaleString()} руб.</span>
+            <p>${product.description}</p>
+            <button class="buy-btn" data-id="${product.id}">В корзину</button>
+        </div>
+    `;
+}
+
+function renderProducts() {
+    const container = document.getElementById('product_list');
+    
+    // Фильтрация и сортировка
+    let filteredProducts = [...products];
+    
+    if (currentFilter !== 'all') {
+        filteredProducts = filteredProducts.filter(p => p.category === currentFilter);
+    }
+    
+    if (currentSort === 'price-asc') {
+        filteredProducts.sort((a, b) => a.price - b.price);
+    } else if (currentSort === 'price-desc') {
+        filteredProducts.sort((a, b) => b.price - a.price);
+    }
+    
+    // Создание HTML
+    let productsHTML = '';
+    filteredProducts.forEach(product => {
+        productsHTML += createProductCard(product);
+    });
+    container.innerHTML = productsHTML;
+    
+    addBuyButtonListeners();
+}
+
+function addBuyButtonListeners() {
+    const buyButtons = document.querySelectorAll('.buy-btn');
+    
+    buyButtons.forEach(button => {
+        button.removeEventListener('click', handleBuyClick);
+        button.addEventListener('click', handleBuyClick);
+    });
+}
+
+function handleBuyClick() {
+    const productId = parseInt(this.getAttribute('data-id'));
+    const product = products.find(p => p.id === productId);
+    
+    if (product) {
+        cartManager.addProduct(product);
+    }
+}
+
+function setupFilters() {
+    document.querySelectorAll('.filt button').forEach(button => {
+        button.addEventListener('click', function() {
+            document.querySelectorAll('.filt button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            this.classList.add('active');
+            
+            currentFilter = this.getAttribute('data-filter');
+            
+            renderProducts();
+        });
+    });
+    
+    document.querySelectorAll('.sortirovka button').forEach(button => {
+        button.addEventListener('click', function() {
+            document.querySelectorAll('.sortirovka button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            this.classList.add('active');
+            
+            currentSort = this.getAttribute('data-sort');
+            
+            renderProducts();
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderProducts();
+    setupFilters();
+    
+    document.querySelector('[data-filter="all"]').classList.add('active');
+    document.querySelector('[data-sort="default"]').classList.add('active');
+});
+    </script>
+</body>
+</html>

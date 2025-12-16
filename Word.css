@@ -1,0 +1,872 @@
+/* Последние изменения - создали рут и переменные для цвета, слегка изменили оттенок синего, добавили логотип, фавиконки */
+/* Все размеры изменены с пикселей на относительную высоту/ширину экрана (vw vh) */
+:root {
+   --blue-color: linear-gradient(180deg,rgba(71, 90, 255, 1) 52%, rgba(92, 51, 255, 1) 100%);
+   --dark-light: #f4f4f4;
+   --light: #f7f7f7;
+}
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--dark-light);
+  }
+
+header {
+  background: var(--blue-color);
+  color: var(--dark-light);
+  padding: 1.5vw 0;
+}
+/* 100vw = 100% ширины экрана */
+/* Изменила нижний блок, теперь justify-content: center; gap: 20vw; так лече настроить позиционирование */
+/* Удалила padding и margin, они перестали играть роль после изменений */
+/* Добавила размеры дивам в хидере, чтобы они были адекватными, также указала им размещение контента по центру */
+header .zagol {
+  display: flex;
+  justify-content: center;
+  gap: 20vw;
+  align-items: center;
+  max-width: 100vw;
+}
+header .logo, header .menu{
+  width: 10vw;
+  display: flex;
+  justify-content: center;
+}
+header .name {
+  width: 40vw;
+  text-align: center;
+}
+header .logo img {
+  height: 8vw;
+  width: auto;
+}
+
+header .name p {
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+header .menu .help p {
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+
+
+
+/* Main Section */
+/* max-width: 1200px; было изменено на  max-width: 87vw;*/
+/* Удалены margin-bottom у каждого блока и в main просто добавлен gap чтобы указать расстояние между блоками */
+main {
+  max-width: 87vw;
+  margin: 3vw auto;
+  padding: 0 2vw;
+  background: var(--light);
+  border-radius: 0.8vw;
+  box-shadow: 0 0.4vw 1vw rgba(0, 0, 0, 0.1);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+}
+img{
+  width: 40vw;
+  height: 40vw;
+}
+.middle_text{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+  align-items: center;
+  text-align: center;
+}
+
+.middle_text, .middle_text2, .middle_text3 {
+  font-size: 1.5vw;
+  line-height: 1.6;
+  width: 80%;
+}
+
+.middle_text2 p, .middle_text3 p {
+  font-size: 1vw;
+  color: #777;
+}
+
+
+
+
+/* Блок выбора */
+.choice, .choice2, .choice3, .choice4, .zapol {
+  margin-bottom: 3vw;
+  width: 80%;
+}
+
+.choice p, .choice2 p, .choice3 p, .choice4 p, .zapol p {
+  font-size: 1.5vw;
+}
+  
+.chsmth, .chsmth2, .chsmth3{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.chsmth3 {
+  flex-direction: column;
+  gap: 3vw;
+}
+
+/* Удалены стили для .dropbtn, .dropbtn2, .dropbtn3 их нет в коде же */
+.dropdown-content, .dropdown-content2{
+  color: var(--dark-light);
+  background: var(--blue-color);
+  min-width: 20vw;
+  box-shadow: 0vw 0.4vw 0.8vw rgba(0, 0, 0, 0.2);
+  z-index: 1; 
+  border-radius: 5px;
+  border: none;
+  height: 4vw;
+  font-size: 1vw;
+}
+/* .dropdown-content3 удалила лейблам margin и вставила в сам блок gap */
+.dropdown-content3 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5vw;
+  font-size: 1.3vw;
+}
+
+.dropdown-content3 label {
+  color: var(--light);
+  background: var(--blue-color);
+  border-radius: 5px;
+  padding: 1vw;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--light);
+  width: 1.5vw;
+  height: 1.5vw;
+}
+
+  
+/* Картинки и галерея */
+/* стараемся код с картинками тут не трогать, он живет исключительно на божьей воле */
+.gallery {
+  display: flex;
+  gap: 1%;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.gallery-item {
+  display: flex;
+  width: 24%;
+  overflow: hidden; 
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  gap: 2vw;
+}
+/* Тут добавила плавность для анимации затухания и уменьшения */
+.gallery-item img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  transition: transform 0.5s ease-in-out;
+}
+/* в целом добавила только помимо уменьшения яркости - уменьшение размера у того что не выбрано */
+.gallery-item img.unselected {
+  opacity: 0.5; 
+  transform: scale(0.9);
+}
+
+.gallery-item button {
+  background: var(--blue-color);
+  color: var(--dark-light);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  height: 3.5vw;
+}
+
+.gallery-item button:hover {
+  background: #1c8dff;
+}
+  
+/* Ввод данных */
+.size-entry{
+  margin-bottom: 1.5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.size-entry .vvod {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.size-entry input{
+  padding: 0.8vw;
+  font-size: 1.2vw;
+  margin: 10px 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  
+}
+.element-name {
+  font-size: 1.5vw;
+}
+.size-entry .instruction{
+  font-size: 1vw;
+  color: #777;
+}
+
+  
+.up {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.up .vibor {
+  border: 2px solid #000000;
+  padding: 1vw;
+  border-radius: 5px;
+}
+
+  
+
+/* Footer */
+footer {
+  gap: 1vw ;
+  background: var(--blue-color);
+  color: var(--dark-light);
+  padding: 2vw 0;
+  text-align: center;
+  width: 100%;
+  border-radius: 5px 5px 0% 0%;
+}
+
+footer input{
+    width: 20vw;
+    height: 5vh;
+    font-size: 3vh;
+}
+
+footer h1 {
+  font-size: 2vw;
+  margin: 0;
+}
+
+footer p {
+  font-size: 1vw;
+  line-height: 1.6;
+}
+
+/* Button Section */
+.button {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3vw;
+  width: 80%;
+}
+
+.button button {
+  color: var(--light);
+  width: 30%;
+  padding: 2.3vw;
+  background: var(--blue-color);
+  border: none;
+  font-weight: 700;
+  font-size: 1.5vw;
+  border-radius: 5px;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1vw; 
+}
+
+.option {
+    background: var(--dark-light);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0.7vw;
+    transition: border-color 0.3s;
+    text-align: center;
+    width: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.option:hover {
+    border-color: #adadad;
+}
+
+.option.selected {
+    border-color: var(--blue-color);
+}
+
+.divforflex {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 3%;
+  width: 100%;
+}
+
+.divforflex button {
+  width: 100%;
+}
+  
+#helpWindow {
+  display: none;
+  position: absolute;
+  background: var(--dark-light);
+  border: 1px solid black;
+  padding: 1vw;
+  z-index: 10;
+}
+
+.rech {
+  display: flex;
+  align-content: flex-start;
+  width: 80%;
+}
+.cost-display {
+  color: #333;
+  border: 1px solid #000000;
+  font-size: 1.5vw;
+  padding: 0 0.8vw;
+}
+
+#citySelect {
+  margin: 1vw;
+  padding: 1vw;
+  border: none;
+  border-radius: 5px;
+  color:blue;
+  background: var(--light);
+}
+
+
+
+option {
+  text-align: center;
+}
+
+#popup button {
+  color: #fff;
+  background: var(--blue-color);
+  padding: 1vw;
+  border: none;
+}
+
+
+
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.5); 
+}
+
+.modal-content {
+  background: #fff;
+  margin: 15% auto;
+  padding: 1.8vw;
+  border: 1px solid var(--blue-color);
+  color: blue;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.close-button {
+  color: blue;
+  float: right;
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+/* Новый код для index */
+
+.sect1, .sect2, .sect3, .sect4 {
+  color: rgb(66, 66, 255);
+  width: 80%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5vh;
+}
+.buttoms{
+  display:flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 4vw;
+}
+hr{
+  height: 5px;
+  color: blue;
+  width: 100%;
+  background:rgb(108, 148, 243) ;
+}
+.sect4 {
+  height: 65vw;
+  align-items: center;
+}
+.sect1 p, .sect2 p{
+  font-size: 1.5vw;
+  color:rgb(51, 51, 51);
+}
+.sect1 h1, .sect2 h2{
+  font-size: 2.5vw;
+} 
+.sect1 a {
+  font-size: 1.2vw;
+  font-weight: bold;
+  color: var(--light) !important;
+  padding: 1vw 1.5vw;
+  border-radius: 5px;
+  border: none;
+  background: var(--blue-color);
+  width: 15vw;
+  text-align: center;
+  cursor: pointer;
+}
+.sect1 a:hover {
+  background: #377afe;
+}
+
+.sect3 {
+  display: flex;
+  flex-direction: row;
+}
+
+ .carousel-container {
+    position: relative;
+    max-width: 90vw;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
+} 
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    
+}
+
+.cardcall {
+    flex: 0 0 90%;
+    padding: 3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.cardcall img {
+    width: 8vw;
+    height: 8vw;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--dark-light);
+    margin-bottom: 2vw;
+}
+
+.cardcall .name {
+    font-weight: 700;
+    font-size: 2vw;
+    color: blue;
+    margin-bottom: 1vw;
+}
+
+.text {
+    font-size: 1.2vw;
+    line-height: 1.6;
+    color: #495057;
+    max-width: 80%;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5vw;
+    gap: 1.5vw;
+}
+
+.carousel-btn {
+    background: var(--blue-color);
+    color: white;
+    border: none;
+    padding: 1.1vw 1.8vw;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2vw;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(76, 110, 245, 0.3);
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin: auto 2vw;
+    gap: 1vw;
+}
+
+.indicator {
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    background: #ced4da;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--blue-color);
+    transform: scale(1.1);
+}
+
+
+@media (max-width: 768px) {
+  .cardcall {
+      padding: 2vw;
+  }
+  
+}
+
+
+/* Footer index */
+.contacts {
+display: flex;
+height: 60vh;
+flex-direction: row;
+align-items: flex-start;
+justify-content: center;
+flex-wrap: nowrap;
+}
+
+.cont {
+height: 15vh;
+width:26%;
+}
+
+.cont svg {
+height: 11vw;
+width: 10vw;
+}
+
+.textfoot {
+  font-size: 1.5vw;
+  height: 1.5vw;
+
+ }
+
+ .minitext {
+  font-size: 1.2vw;
+  padding: 0.5vw;
+ }
+
+ .minitext a {
+  color: var(--light);
+  font-weight: 300;
+  text-decoration: none;
+ }
+
+
+
+
+
+
+
+
+
+
+
+ /* код для маркета */
+
+#product_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1vw;
+} 
+
+.product-card {
+  flex-grow: 1;
+  max-width: 30vw;
+  height: 30vw;
+  border-radius: 15px;
+  background: var(--dark-light);
+  display: flex;
+  flex-direction: column;
+  padding: 1vw;
+  box-shadow: 0 0.4vw 1vw rgba(0, 0, 0, 0.1);
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+}
+
+.product-card img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+
+.product-card .price {
+  color: blue;
+  font-weight: bold;
+  font-size: 1.5vw;
+}
+
+.product-card button {
+  width: 100%;
+  height: 2vw;
+  font-size: 1vw;
+  font-weight: bold;
+  padding: 0.5vw;
+  border: none;
+  border-radius: 5px;
+  color: var(--light);
+  background: var(--blue-color);
+}
+
+main .filter {
+  width: 20vw;
+}
+
+main .block {
+  width: 70vw
+}
+
+.filter button {
+  border: 1px solid rgb(157, 157, 157);
+  margin: 0.5vw;
+  padding:0.5vw;
+  width: 40%;
+  border-radius: 3px;
+  
+  
+}
+.filter h1{
+    font-size: 1.5vw;
+}
+.korzina{
+  
+  left:10vw;
+  bottom: 5vh;
+  object-fit: contain;
+  position: fixed;
+  width:9vw;
+  height:9vw;
+
+}
+.korzina p{
+  text-align: center;
+  position: absolute;
+  padding:0.1vw;
+  top:5%;
+  left:37%;
+  width: 1.5vw;
+  height: 1.5vw;
+  font-size: 1.3vw;
+  border-radius: 20px;
+  background-color: rgb(205, 205, 205) ;
+ 
+  color: #1c68ff;
+}
+.korzina img{
+  position: absolute;
+  bottom:0;
+  width:75%;
+  height: 75%;
+}
+.carousel-container{
+  width:100%;
+}
+.empty-cart{
+  margin: 1vw;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:0.01vw;
+}
+.empty-cart p{
+  color:grey;
+  padding:1vw;
+  margin:0;
+}
+.empty-cart h2{
+  padding:0vw;
+  margin:0;
+  color:#4d4d4e;
+}
+.cart-container a{
+  text-align: center;
+  width:95%;
+  padding-top:1vw;
+  margin: 1vw;
+  font-size: 1.5vw;
+  color:white;
+  background: #91b6ff;
+  text-decoration: none;
+  font-weight: 750;
+  border-radius: 7px;
+  -webkit-box-shadow: 7px 6px 7px -1px rgba(34, 60, 80, 0.2);
+-moz-box-shadow: 7px 6px 7px -1px rgba(34, 60, 80, 0.2);
+box-shadow: 7px 6px 7px -1px rgba(34, 60, 80, 0.2);
+  padding: 1vw;
+}
+.cart-container{
+  width:95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cart-items{
+  gap:4vw;
+  display:flex;
+  flex-direction: column;
+  
+  padding:1vw;
+}
+.item-details{
+  align-items: flex-end;
+  width:30%;
+   display:flex;
+  gap:1vw;
+  flex-direction: column;
+}
+
+.cart-summary{
+  width:95%;
+  background:#ececec; ;
+  align-self: flex-start;
+  display:flex;
+  flex-direction: column;
+  gap:1vw;
+  padding:1vw;
+  border-radius: 10px;
+}
+.checkout-btn, .clear-cart-btn{
+  border:none;
+  -webkit-box-shadow: 7px 6px 7px -1px rgba(34, 60, 80, 0.2);
+-moz-box-shadow: 7px 6px 7px -1px rgba(34, 60, 80, 0.2);
+box-shadow: 7px 6px 7px -1px rgba(34, 60, 80, 0.2);
+  font-size: 1.2vw;
+  background-color: rgb(243, 243, 243);
+  padding: 0.1vw;
+}
+.remove-btn{
+  width:33%;
+  font-size: 1vw;
+  padding: 0.1vw;
+  border:none;
+  border-radius: 5px;
+  color:#6b6b6b;
+}
+.cart-item img{
+  width:100%;
+  height:100% ;
+  object-fit: contain;
+  
+}
+.cart-item{
+  /* background-color: #1c68ff; */
+  justify-content: space-between;
+  width:100%;
+  display: flex;
+  flex-direction: row;
+}
+.left-details{
+  width:70%;
+  display:flex;
+  flex-direction: row;
+}
+
+.helpnite{
+  display: flex;
+  flex-direction: column;
+  width:70%;
+  
+}
+.helpnite1{
+  width:30%;
+}
+.item-name, .item-category{
+  text-align: center;
+  padding:0.5vw;
+  font-size:1.5vw;
+}
+.item-category{
+  font-size: 1.2vw;
+  color:#6b6b6b;
+}
+.item-name{
+  text-decoration: underline;
+  text-decoration-color:#91b6ff ;
+}
+.item-price{
+  font-size: 1.5vw;
+  text-align: right;
+  padding:0.5vw;
+  color: transparent;
+-webkit-background-clip: text;
+background-clip: text;
+background-image: var(--blue-color);
+}
+.quantity-controls{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding:1vw;
+  gap:0.5vw;
+}

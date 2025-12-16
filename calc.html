@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>ClearAesthetics</title> 
+    <link rel="stylesheet" type="text/css" href="Word.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/fav/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/fav/favicon-16x16.png" />
+    <link rel="manifest" href="img/fav/site.webmanifest" />
+</head>
+<body>
+    <header>
+        <div class="zagol">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.png" alt="LOGO"></a>
+            </div>
+            <div class="name">
+                <p>Калькулятор фасадного декора</p>
+            </div>
+            <nav class="menu">
+                <div class="help">
+                    <p class="help-button">🛈</p> 
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <div id="popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color:#fff; border:1px solid #ccc; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.2); z-index:1000; color: #0080ff;">
+      <h2>Вам нужна помощь?</h2>
+      <p>Свяжитесь с нами по телефону +7 (номер телефона) или по электронной почте [email protected]</p>
+      <button id="closeButton">Закрыть</button>
+    </div>
+    
+    <script>
+      const helpButton = document.querySelector('.help-button'); // Измененный селектор
+      const popup = document.getElementById('popup');
+      const closeButton = document.getElementById('closeButton');
+    
+      helpButton.addEventListener('click', () => {
+        popup.style.display = 'block';
+      });
+    
+      closeButton.addEventListener('click', () => {
+        popup.style.display = 'none';
+      });
+    </script>
+    
+    <main>
+        <div class="middle_text">
+            <!-- Расширила текст -->
+            <p>Мы предоставляем широкий спектр услуг по точным замерам, которые охватывают различные области применения. 
+                Наши услуги востребованы в строительстве, где точность измерений непосредственно влияет на качество и 
+                безопасность конструкций. <br>
+            Наша команда состоит из опытных и квалифицированных специалистов, которые используют современные инструменты 
+            и технологии для достижения максимальной точности. <br>
+            Мы гарантируем высокое качество выполнения работ, что является основой успешного завершения любого проекта.</p>
+        </div>
+
+        <div class="choice">
+            <div class="chsmth">
+                <p>Выберите пожалуйста ваш регион:</p>
+                <form class="dropdown">
+                    <select class="dropdown-content">
+                        <option value="#">Москва</option>
+                        <option value="#">Краснодар</option>
+                        <option value="#">Ростов-на-Дону</option>
+                        <option value="#">Грозный</option>
+                        <option value="#">Ставрополь</option>
+                        <option value="#">Крым</option>
+                        <option value="#">Махачкала</option>
+                        <option value="#">Астрахань</option>
+                        <option value="#">Самара</option>
+                    </select>
+                </form>
+            </div>
+            <div class="chsmth2">
+                <p>Выберите пожалуйста тип вашего здания:</p>
+                <form class="dropdown2">
+                    <select class="dropdown-content2">
+                        <option value="#">Частный дом для себя</option>
+                        <option value="#">Частный дом кля клиента</option>
+                        <option value="#">Административное здание</option>
+                        <option value="#">Многоквартирный дом</option>
+                        <option value="#">Ресторан/Гостиница/Торговый центр</option>
+                        <option value="#">Несколько домов</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="choice2">
+            <div class="chsmth3">
+                <p style="font-size: 25px;">Выберите пожалуйста, что будет декорироваться.</p>
+                <div class="options">
+                    <div class="option" data-name="Окна">
+                        <span>Окна</span>
+                    </div>
+                    <div class="option" data-name="Двери">
+                        <span>Двери</span>
+                    </div>
+                    <div class="option" data-name="Карнизы">
+                        <span>Карнизы</span>
+                    </div>
+                    <div class="option" data-name="Плинтуса">
+                        <span>Плинтуса</span>
+                    </div>
+                    <div class="option" data-name="Стеновые панели">
+                        <span>Стеновые панели</span>
+                    </div>
+                 
+                    <!-- <script>
+                        document.querySelectorAll('.option').forEach(option => {
+                        option.addEventListener('click', () => {
+                        document.querySelectorAll('.option').forEach(opt =>{
+                            opt.classList.remove('selected');
+                        })
+                        option.classList.toggle('selected');
+                            });
+                        });
+                    </script> -->
+                </div>
+            </div>
+        </div>
+
+        <div class = "choice3">
+            <div class="chsmth4">
+                <p style="width: 70%; padding-bottom: 30px; font-size: 25px;">Выберите пожалуйста варианты готовые варианты оконного декора, или можно ниже выбрать свой вариант декора</p>
+                <div class="gallery" id = 'gallery'>
+                </div>
+            </div>
+            <script>
+                const galleryData = {
+"Окна": [
+{ src: "img/wind.png", alt: "Декор окон 1" },
+{ src: "img/wind2.jpeg", alt: "Декор окон 2" },
+{ src: "img/o_d.jpg", alt: "Декор окон 3" },
+{ src: "img/okna10.jpg", alt: "Декор окон 4" }
+],
+"Двери": [
+{ src: "img/dver1.jpg", alt: "Декор дверей 1" },
+{ src: "img/dver2.jpeg", alt: "Декор дверей 2" },
+{ src: "img/dver3.jpg", alt: "Декор дверей 3" },
+{ src: "img/dver4.jpg", alt: "Декор дверей 4" }
+],
+"Карнизы": [
+{ src: "img/karniz1.webp", alt: "Декор карнизов 1" },
+{ src: "img/karniz2.jpg", alt: "Декор карнизов 2" },
+{ src: "img/karniz3.jpg", alt: "Декор карнизов 3" },
+{ src: "img/karniz4.jpg", alt: "Декор карнизов 4" }
+],
+"Плинтуса": [
+{ src: "img/plintyc1.jpg", alt: "Плинтус 1" },
+{ src: "img/plintyc2.jpg", alt: "Плинтус 2" },
+{ src: "img/plintyc3.jpg", alt: "Плинтус 3" },
+{ src: "img/plintyc4.jpg", alt: "Плинтус 4" }
+],
+"Стеновые панели": [
+{ src: "img/stenop1.jpg", alt: "Стеновые панели1" },
+{ src: "img/stenovp2.jpg", alt: "Стеновые панели2" },
+{ src: "img/stenovp3.jpg", alt: "Стеновые панели3" },
+{ src: "img/stenovp4.jpg", alt: "Стеновые панели4" }
+]
+};
+              function UpgreatGallery(caterogy){
+                  const gallery = document.getElementById('gallery');
+                  gallery.innerHTML = '';
+                  const items = galleryData[caterogy]||[];
+                  items.forEach(item=> {
+                    const divv = document.createElement('div');
+                    divv.className = 'gallery-item';
+                    divv.innerHTML = `
+                    <img src="${item.src}" alt="${item.alt}">
+                        <button onclick="selectImage(this)">Выбрать</button>
+                    `;
+                    gallery.appendChild(divv);
+                  })
+              }
+               function selectImage(button) {
+                // Убираем выделение у всех изображений и добавляем класс unselected
+                const images = document.querySelectorAll('.gallery-item img');
+                images.forEach(img => {
+                    img.classList.remove('selected');
+                    img.classList.add('unselected'); // Добавляем класс unselected
+                });
+
+                // Добавляем выделение к изображению, соответствующему нажатой кнопке
+                const galleryItem = button.parentElement;
+                const image = galleryItem.querySelector('img');
+                image.classList.add('selected');
+                image.classList.remove('unselected'); // Убираем класс unselected у выбранного изображения
+                }
+               
+            </script>
+        </div>
+                
+        <div class="zapol">
+            <p style="font-size: 25px;">Введите размеры выбранных элементов:</p>
+            <div class="main_zapol">
+                <div class="window">
+                    <div class="size-entry">
+                        <span class="element-name" id = 'element-name'></span>
+                        <div class="vvod">
+                            <input type="number" id="window-size" placeholder="Площадь (см²)" class="quantity-input">
+                            <input type="number" id="window-count" placeholder="Количество" class="quantity-input">
+                        </div> 
+                    </div>
+                </div>
+            <script>   
+                    const content_data = ["Окна", "Двери", "Карнизы","Плинтуса", "Стеновые панели"]
+                     function UpgreatGallery2(caterogies){
+                        const choose = document.getElementById('element-name');
+                        choose.innerHTML = `<p> ${caterogies}</p>`;
+                           
+                        }
+              
+               document.querySelectorAll('.option').forEach(option => {
+option.addEventListener('click', () => {
+
+document.querySelectorAll('.option').forEach(opt => {
+opt.classList.remove('selected');
+});
+
+
+option.classList.add('selected');
+
+
+const category = option.getAttribute('data-name');
+UpgreatGallery(category);
+
+UpgreatGallery2(category);
+});
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+UpgreatGallery('Окна');
+document.querySelector('.option[data-name="Окна"]').classList.add('selected');
+});
+                
+            </script>
+            </div>  
+              
+        </div>
+
+
+        <!-- --------------------------------------------- -->
+        <div class="button">
+            <div class="divforflex">
+                <button id="calculate-button">Рассчитать</button>
+                <button id="clear-button">Очистить расчет</button>
+                <button id="help-button">Нужна помощь</button>
+                <div id="help-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>Инструкция по Калькулятору на сайте</h2>
+                        <p>Расчёт происходит исходя из введёных вами данных.</p>
+                        <ul>
+                            <li>Укажите площадь выбранной категории.</li>
+                            <li>Укажите их количество.</li>
+                            <li>Нажмите кнопку - рассчитать.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const helpButton = document.getElementById('help-button');
+                const modal = document.getElementById('help-modal');
+                const closeButton = document.querySelector('.close-button');
+
+                helpButton.addEventListener('click', function() {
+                    modal.style.display = 'block'; // Показать модальное окно
+                });
+
+                closeButton.addEventListener('click', function() {
+                    modal.style.display = 'none'; // Скрыть модальное окно
+                });
+
+                window.addEventListener('click', function(event) {
+                    if (event.target === modal) {
+                        modal.style.display = 'none'; // Скрыть модальное окно при клике вне его
+                    }
+                });
+            });
+        </script>
+        
+        <div class = "rech">
+            <div class="cost-display">
+                <p>Стоимость вашего заказа: <span id="order-cost">0 руб</span></p>
+            </div>
+        </div>
+        <div class = "middle_text3">
+            <p>Молдинги, профиль ХХХ, ширина YY, длина ZZ, количество заготовок длиной 2 метра - АА шт.</p>
+            <p>Цена рассчитана по продукции, имеющейся в наличии на складе фабрики “ClearAesthetics”.
+                “На данный расчет может быть предоставлена скидка.”
+                “Цена не включает в себя стоимость доставки до вашего региона</p>
+        </div>
+        
+        <footer>
+            <div class = "podval">
+                <div class = "m_podval">
+                    <h1>ClearAesthetics производство изделий из пенополистирола</h1>
+                </div>
+                <div class = "ok_podval">
+                    <p>Режим работы: Понедельник - пятница с 9:00 до 18:00. Суббота с 9:00 до 13:00</p>
+                </div>
+                
+                <div class = "ad_podval">
+                    
+                    <label for="citySelect">Выберите ваш город:</label>
+                    <select id="citySelect" onchange="showInfo()">
+                        <option value="">--Выберите город--</option>
+                        <option value="sevastopol">Севастополь</option>
+                        <option value="moscow">Москва</option>
+                        <option value="krasnodar">Краснодар</option>
+                        <option value="rostov">Ростов-на-Дону</option>
+                        <option value="grozny">Грозный</option>
+                        <option value="stavropol">Ставрополь</option>
+                    </select>
+
+                    <div id="info">
+                        <p id="cityName"></p>
+                        <p id="cityAddress"></p>
+                        <p id="cityPhone"></p>
+                    </div>
+
+                    <script>
+                        const cityData = {
+                            sevastopol: {
+                                name: "Севастополь",
+                                address: "ул. Генерала Мельника, 108",
+                                phone: "+7 (978) 739-12-94"
+                            },
+                            moscow: {
+                                name: "Москва",
+                                address: "1 ЮГ- МКАД 25км, внешняя сторона, ТК КОНСТРУКТОР, пав А1.14-Б1.13, Каширка М4",
+                                phone: "+7 (985) 013-11-42"
+                            },
+                            krasnodar: {
+                                name: "Краснодар",
+                                address: "ул. Пригородная, 299",
+                                phone: "+7(989) 248-79-05"
+                            },
+                            rostov: {
+                                name: "Ростов-на-Дону",
+                                address: "ул. Шолохова, 48",
+                                phone: "+7 (989) 248-79-05"
+                            },
+                            grozny: {
+                                name: "Грозный",
+                                address: "ул. Генерала Мельника, 108",
+                                phone: "+7 (985) 013-11-42"
+                            },
+                            stavropol: {
+                                name: "Ставрополь",
+                                address: "ул. 3-я Промышленная,3 ТЦ «Мой дом», 2 этаж, офис 86",
+                                phone: "+7 (978) 739-12-94"
+                            }
+                        };
+
+                        function showInfo() {
+                            const select = document.getElementById("citySelect");
+                            const selectedCity = select.value;
+                            const infoDiv = document.getElementById("info");
+                            
+                            if (selectedCity) {
+                                const city = cityData[selectedCity];
+                                
+                                document.getElementById("cityAddress").innerText = `Адрес: ${city.address}`;
+                                document.getElementById("cityPhone").innerText = `Телефон: ${city.phone}`;
+                                
+                                infoDiv.style.display = 'block';
+                            } else {
+                                infoDiv.style.display = 'none';
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Определяем стоимость за единицу площади для окон и дверей
+        const pricePerSquareMeterWindow = 500; // цена за см² 
+
+
+        // Кнопки и поля ввода
+        const calculateButton = document.getElementById('calculate-button');
+        const clearButton = document.getElementById('clear-button');
+        const windowSizeInput = document.getElementById('window-size');
+        const windowCountInput = document.getElementById('window-count');
+        const orderCostDisplay = document.getElementById('order-cost');
+
+        // Функция для расчета стоимости
+        function calculateCost() {
+            const windowSize = parseFloat(windowSizeInput.value);
+            const windowCount = parseInt(windowCountInput.value);
+          
+
+            if (isNaN(windowSize) || isNaN(windowCount)) {
+                alert("Пожалуйста, заполните все поля корректно.");
+                return;
+            }
+
+            // Рассчитываем площадь
+            const windowArea = windowSize / 100 * windowSize / 100; // площадь одного окна (в м²)
+           
+
+            // Рассчитываем общую стоимость
+            const totalCost = (windowArea * windowCount * pricePerSquareMeterWindow);
+
+            // Отображаем результат
+            orderCostDisplay.textContent = `${totalCost.toFixed(2)} руб`;
+        }
+
+        // Функция для очистки данных
+        function clearCalculation() {
+            windowSizeInput.value = '';
+            windowCountInput.value = '';
+        
+            orderCostDisplay.textContent = '0 руб';
+        }
+
+        // Обработчики событий
+        calculateButton.addEventListener('click', calculateCost);
+        clearButton.addEventListener('click', clearCalculation);
+    </script>
+</body>
+</html>
