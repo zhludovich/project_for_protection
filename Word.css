@@ -130,6 +130,9 @@ img{
   height: 4vw;
   font-size: 1vw;
 }
+.dropdown-content{
+   color:blue;
+}   
 /* .dropdown-content3 удалила лейблам margin и вставила в сам блок gap */
 .dropdown-content3 {
   display: flex;
