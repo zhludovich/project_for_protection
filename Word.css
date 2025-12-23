@@ -130,9 +130,6 @@ img{
   height: 4vw;
   font-size: 1vw;
 }
-.dropdown-content option, .dropdown-content2 option{
-   color:blue;
-}   
 /* .dropdown-content3 удалила лейблам margin и вставила в сам блок gap */
 .dropdown-content3 {
   display: flex;
@@ -489,6 +486,45 @@ hr{
   display: flex;
   flex-direction: row;
 }
+/* Стили для десктопа */
+.podsect h2{
+    font-size:1.8vw;
+}
+.podsect p{
+    font-size:1.2vw;
+}
+
+/* Стили для мобильных */
+@media (max-width: 769px) {
+  .sect3{
+    flex-direction: column;
+    gap:0;
+  }
+  .podsect h2, .sect1 h1, .sect2 h2 {
+    font-size: 4vw;
+  }
+  
+  .podsect p, .sect1 p, .sect2 p {
+    font-size: 2vw;
+  }
+  .sect1 a{
+    font-size: 2vw;
+    padding: 1.5vw 2.5vw;
+    width: 15vw;
+}
+.podsect{
+  border-radius: 20px;
+  border: 2px solid blue;
+  padding:1.5vw;
+}
+footer .contacts{
+  height: 30vh;
+}
+main{
+  gap:15vw;
+}
+}
+
 
  .carousel-container {
     position: relative;
@@ -578,12 +614,10 @@ hr{
     transform: scale(1.1);
 }
 
-
-@media (max-width: 768px) {
+@media (max-width: 769px) {
   .cardcall {
       padding: 2vw;
   }
-  
 }
 
 

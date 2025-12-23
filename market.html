@@ -246,11 +246,12 @@ function renderProducts() {
     
     // Фильтрация и сортировка
     let filteredProducts = [...products];
-    
+    // currentFilter - все нажато
     if (currentFilter !== 'all') {
+        // р category определяет какая кнопка нажата
         filteredProducts = filteredProducts.filter(p => p.category === currentFilter);
     }
-    
+    // asc - от меньшего к большему
     if (currentSort === 'price-asc') {
         filteredProducts.sort((a, b) => a.price - b.price);
     } else if (currentSort === 'price-desc') {
@@ -260,8 +261,10 @@ function renderProducts() {
     // Создание HTML
     let productsHTML = '';
     filteredProducts.forEach(product => {
+        // добавляет отфильтрованные карточки
         productsHTML += createProductCard(product);
     });
+    //отражение всех карточек
     container.innerHTML = productsHTML;
     
     addBuyButtonListeners();
