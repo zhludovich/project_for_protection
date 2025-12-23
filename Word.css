@@ -506,10 +506,26 @@ hr{
   .podsect p, .sect1 p, .sect2 p {
     font-size: 4vw;
   }
+  header .menu .help p {
+    font-size: 4vw;
+  }
+  header .name p{
+    font-size: 3.5vw;
+  }
+  header .logo{
+    height: 15vw;
+    margin:1.5vw;
+
+  }
+  header .logo img{
+    height: 15vw;
+    width:auto;
+    margin:0.5vw;
+  }
   .sect1 a{
-    font-size: 2vw;
+    font-size:3.5vw;
     padding: 1.5vw 2.5vw;
-    width: 15vw;
+    width: 25vw;
 }
 .podsect{
   border-radius: 20px;
@@ -518,6 +534,10 @@ hr{
 }
 footer .contacts{
   height: 30vh;
+}
+footer input{
+  height: 2vh;
+  width: 40vw ;
 }
 main{
   gap:15vw;
