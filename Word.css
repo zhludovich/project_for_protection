@@ -436,7 +436,6 @@ option {
 .sect1, .sect2, .sect3, .sect4 {
   color: rgb(66, 66, 255);
   width: 80%;
-  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -498,14 +497,14 @@ hr{
 @media (max-width: 769px) {
   .sect3{
     flex-direction: column;
-    gap:0;
+    gap:1vw;
   }
   .podsect h2, .sect1 h1, .sect2 h2 {
-    font-size: 4vw;
+    font-size: 6vw;
   }
   
   .podsect p, .sect1 p, .sect2 p {
-    font-size: 2vw;
+    font-size: 4vw;
   }
   .sect1 a{
     font-size: 2vw;
