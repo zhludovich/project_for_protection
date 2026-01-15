@@ -376,8 +376,13 @@ footer p {
 
 option {
   text-align: center;
+  color: blue;
+    
 }
-
+.dropdown-content option{
+  color: var(--dark-light);
+    background: var(--blue-color);
+}
 #popup button {
   color: #fff;
   background: var(--blue-color);
@@ -541,6 +546,20 @@ footer input{
 }
 main{
   gap:15vw;
+}
+.filt, .sortirovka{
+  display:flex;
+  flex-direction: column;
+}
+.filter .filt button, .filter .sortirovka button{
+  color:#292929;
+  font-weight: 550;
+  font-size: 2.5vw;
+  padding:2vw 0;
+  width:19vw;
+}
+.filter h1{
+  font-size: 3vw ;
 }
 }
 
@@ -754,6 +773,11 @@ main .block {
 .filter h1{
     font-size: 1.5vw;
 }
+@media (max-width: 769px) {
+    .filter h1 {
+        font-size: 3vw;
+    }
+}
 .korzina{
   
   left:10vw;
@@ -783,6 +807,40 @@ main .block {
   bottom:0;
   width:75%;
   height: 75%;
+}@media (max-width: 769px) {
+  .korzina img{
+  position: absolute;
+  bottom:0;
+  width:100%;
+  height: 100%
+}
+.korzina{
+  width:15vw;
+  height: 15vw;
+}
+.korzina p{
+   width: 5vw;
+  height: 5vw;
+  font-size: 5vw;
+  top:-41%;
+  left:42%;
+  
+}
+.product-card{
+  max-width: 50vw;
+  height: 80vw;
+}
+.product-card .price {
+  font-size: 3vw;
+}
+.product-card button {
+  height: 5vw;
+  font-size: 3vw;
+}
+.product-card p{
+  font-size: 2.5vw;
+  color:#292929;
+}
 }
 .carousel-container{
   width:100%;
@@ -925,4 +983,90 @@ background-image: var(--blue-color);
   justify-content: flex-end;
   padding:1vw;
   gap:0.5vw;
+}
+@media (max-width: 769px) {
+  main h1{
+    font-size: 7vw;
+  }
+.item-name, .item-category{
+  font-size: 3vw;
+  margin-left:7vw;
+}
+.item-price {
+  font-size: 3vw;
+  font-weight: 700;
+}
+.remove-btn {
+  width: 55%;
+  font-size: 3vw;
+  padding: 1.5vw 0.5vw;
+}
+.helpnite{
+  width:60%;
+}
+.helpnite1{
+  width:40%;
+}
+.cart-summary {
+  margin: 5vw 0;
+}
+.checkout-btn, .clear-cart-btn {
+  margin-bottom: 1vw;
+  padding:1vw;
+  font-size: 3vw;
+}
+.cart-container a {
+  padding:1.7vw;
+  font-size: 3vw;
+}
+
+}
+@media (max-width: 769px){
+    .middle_text p, .middle_text2 p, .middle_text3 p{
+      font-size: 3vw;
+    }
+    .chsmth, .chsmth2, .chsmth3{
+      display: flex;
+      flex-direction: column;
+      font-size: 5vw;
+    }
+    .choice p, .choice2 p, .choice3 p, .choice4 p, .zapol p{
+      font-size: 4.5vw;
+    }
+    .dropdown-content, .dropdown-content2{
+      font-size: 4vw;
+      height:10vw;
+      margin: 1.5vw 0;
+    }
+    .options{
+      flex-direction: column;
+      gap:5vw;
+      font-size: 4.5vw;
+    }
+    .option{
+      padding:3vw 7vw;
+    }
+    .gallery-item button{
+      font-size: 3.5w;
+      height:6vw ;
+    }
+    .size-entry input{
+      font-size: 3vw;
+    }
+    .button button{
+      font-size: 3vw;
+      height: 12vw;
+    }
+    .cost-display{
+      font-size: 3vw;
+    }
+    footer h1{
+      font-size: 3vw;
+    }
+    footer{
+      height: 40vh;
+    }
+    .ok_podval p, .ad_podval p{
+        font-size: 3vw;
+    }
 }
