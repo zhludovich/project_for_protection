@@ -470,6 +470,9 @@ hr{
 .sect1 h1, .sect2 h2{
   font-size: 2.5vw;
 } 
+.sect4 h2{
+  font-size: 3vw;
+}
 .sect1 a {
   font-size: 1.2vw;
   font-weight: bold;
@@ -568,7 +571,7 @@ main{
     position: relative;
     max-width: 90vw;
     margin: 0 auto;
-    overflow: hidden;
+    /* overflow-x: hidden; */
     border-radius: 15px;
 } 
 
@@ -652,11 +655,7 @@ main{
     transform: scale(1.1);
 }
 
-@media (max-width: 769px) {
-  .cardcall {
-      padding: 2vw;
-  }
-}
+
 
 
 /* Footer index */
@@ -1068,5 +1067,33 @@ background-image: var(--blue-color);
     }
     .ok_podval p, .ad_podval p{
         font-size: 3vw;
+    }
+    .cardcall img{
+      width:14vw;
+      height: 14vw;
+      padding-right: 2vw;
+      
+    }
+    .cardcall .name{
+      font-size: 3.5vw;
+      display:none;
+    }
+    .cardcall .text{
+      font-size: 2vw;
+      text-align: left;
+    }
+    .cardcall{
+      display: flex;
+      flex-direction:row;
+      gap:0.5vw;
+      height: 40vw;
+      overflow-x: hidden;
+    }
+    .carousel-container{
+      height: 40vw;
+      /* overflow-x: hidden; */
+    }
+    .carousel{
+      /* overflow-x: hidden; */
     }
 }

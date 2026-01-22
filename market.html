@@ -229,7 +229,7 @@
         category: "Комплекты"
     }
 ]
-function createProductCard(product) {
+function createProductCard(product) { //делает карточку
     return `
         <div class="product-card" data-category="${product.category}">
             <img src="${product.image}" alt="${product.name}">
@@ -270,7 +270,7 @@ function renderProducts() {
     addBuyButtonListeners();
 }
 
-function addBuyButtonListeners() {
+function addBuyButtonListeners() { //обрабатывает нажатие кнопки
     const buyButtons = document.querySelectorAll('.buy-btn');
     
     buyButtons.forEach(button => {
@@ -279,7 +279,7 @@ function addBuyButtonListeners() {
     });
 }
 
-function handleBuyClick() {
+function handleBuyClick() { //обработка каррточки на какую именно нажали
     const productId = parseInt(this.getAttribute('data-id'));
     const product = products.find(p => p.id === productId);
     
@@ -288,7 +288,7 @@ function handleBuyClick() {
     }
 }
 
-function setupFilters() {
+function setupFilters() { //фильтрация карточек
     document.querySelectorAll('.filt button').forEach(button => {
         button.addEventListener('click', function() {
             document.querySelectorAll('.filt button').forEach(btn => {
@@ -318,7 +318,7 @@ function setupFilters() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() { //создает карточки товара, сразу как запустилаь страница
     renderProducts();
     setupFilters();
     
