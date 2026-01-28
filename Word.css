@@ -571,7 +571,7 @@ main{
     position: relative;
     max-width: 90vw;
     margin: 0 auto;
-    /* overflow-x: hidden; */
+   overflow: hidden;
     border-radius: 15px;
 } 
 
@@ -1096,4 +1096,5 @@ background-image: var(--blue-color);
     .carousel{
       /* overflow-x: hidden; */
     }
+
 }
