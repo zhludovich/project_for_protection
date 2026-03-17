@@ -382,10 +382,7 @@ option {
   color: blue;
     
 }
-.dropdown-content option{
-  color: var(--dark-light);
-    background: var(--blue-color);
-}
+
 #popup button {
   color: #fff;
   background: var(--blue-color);
